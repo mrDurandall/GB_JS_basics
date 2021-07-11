@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS. Lesson-3. Task-5</title>
+</head>
+<body>
+    <!-- * Нарисовать пирамиду с 20 рядами с помощью console.log, как показано на рисунке:
+            x
+            xx
+            xxx
+            xxxx
+            xxxxx
+    -->
+    <script>
+        var xString = ''                    // Строка, которую будем выводить
+        for (var i = 1; i <= 20; i++) {     // Запускаем цикл с количеством итераций, равному количеству выводимых строк
+            xString += 'x'                  // На каждой итерации добавляем к тексту строки символ х
+            console.log(xString)            // Выводим в консоль текущее состояние строки
+        } 
+    </script>
+</body>
+</html>
