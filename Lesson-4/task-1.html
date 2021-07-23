@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS. Lesoon-4. Task-1</title>
+</head>
+<body>
+    <!-- Написать функцию, преобразующую число в объект.
+     Передавая на вход число от 0 до 999, мы должны получить на выходе объект,
+    в котором в соответствующих свойствах описаны единицы, десятки и сотни.
+    Например, для числа 245 мы должны получить следующий объект:
+    {‘единицы’: 5, ‘десятки’: 4, ‘сотни’: 2}.
+    Если число превышает 999, необходимо выдать соответствующее сообщение с помощью console.log и вернуть пустой объект. -->
+    <script>
+        function numberToObject(numb) {
+            // Сначала проверяем, попадает ли число в промежуток между 0 и 999
+            // если не попадаем, возвращаем пустой объект
+            if (Number(numb)<0 || Number(numb)>999) {
+                console.log('Число не удовлетворяет условию!');
+                return {};
+            // Инача возвращаем объект с тремя свойствами: units(единицы), dozens(десятки), hundreds(сотни)
+            // Единицы - остаток от деления исходного числа на 10
+            // Десятки - получем остаток от деления исходного числа на сто, и возвращаем целую часть от деления его на 10
+            // Сотни - целая часть от результата деления исходного числа на 100
+            } else {
+                return {units: numb % 10,
+                        dozens: parseInt((numb % 100) / 10),
+                        hundreds: parseInt(numb / 100) };
+            }
+        }
+
+        // Несколько вариантов для проверки работы:
+        console.log(numberToObject(123));
+        console.log(numberToObject(999));
+        console.log(numberToObject(1024));
+        console.log(numberToObject(7));
+        console.log(numberToObject(45));
+    </script>
+</body>
+</html>
