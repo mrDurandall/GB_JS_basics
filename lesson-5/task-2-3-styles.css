@@ -1,0 +1,24 @@
+.product {
+    display: flex;
+    height: 75px
+}
+
+.product_name {
+    display: flex;
+    text-align: center;
+    width: 350px;
+    border: dotted black 1px;
+    margin: 1px;
+}
+
+.product_price {
+    display: flex;
+    text-align: center;
+    width: 150px;
+    border: dotted black 1px;
+    margin: 1px;
+}
+
+p {
+    margin: auto;
+}

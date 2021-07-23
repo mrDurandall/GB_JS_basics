@@ -1,0 +1,35 @@
+/* общий контейнер ряда */
+.row{
+    height: 100px;
+    display: flex;
+}
+
+/* специальный контейнер для первого и последнего ряда */
+.first_row {
+    height: 30px;
+}
+
+/* общий контейнер ячейки */
+.cell {
+    display: flex;
+    width: 100px;
+    background: white;
+    border: 1px solid gray ;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* специальный контейнер для первой и последней ячейки */
+.first_cell {
+    width: 30px;
+}
+
+/* специальный контейнер для нечетных ячеек */
+.odd_cell {
+    background: black;
+}
+
+/* класс для параграфа, чтобы цифры и буквы выставлялись в центре своих ячеек */
+p {
+    margin: auto;
+}
