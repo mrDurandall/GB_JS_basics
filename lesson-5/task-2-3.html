@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS. Lesson-5. Task-2-3</title>
+    <link rel="stylesheet" href="task-2-3-styles.css">
+</head>
+<body>
+    <!--    2. Сделать генерацию корзины динамической: верстка корзины не должна находиться в HTML-структуре.
+            Там должен быть только div, в который будет вставляться корзина, сгенерированная на базе JS:
+            2.1. Пустая корзина должна выводить строку «Корзина пуста»;
+            2.2. Наполненная должна выводить «В корзине: n товаров на сумму m рублей».
+
+            3*. Сделать так, чтобы товары в каталоге выводились при помощи JS:
+            3.1. Создать массив товаров (сущность Product);
+            3.2. При загрузке страницы на базе данного массива генерировать вывод из него.
+            HTML-код должен содержать только div id=”catalog” без вложенного кода. Весь вид каталога генерируется JS. -->
+
+    <!-- Оба задания будут в одном этом файле. Сначала корзина, потом каталог -->
+
+    <!-- div для хранения корзины -->
+    <div id='basket'></div>
+
+    <!-- div для хранения каталога -->
+    <div id='catalog'></div>
+
+    <script>
+        "use strict";
+        // Структуру и методы корзины, а также код для ее заполнения возьмем из задания к предыдущему уроку
+        var shoppingCart = {
+            // массив list хранит список товаров
+            // Товары должны быть представлены объекстами со свойствами name, price, quantity
+            list: [],
+
+            // метод countBasketPrice высчитывает суммарную стоимость товаров в корзине на основе их цены и колчиества
+            // выводит её в консоль и возвращает эту сумму
+
+            countBasketPrice: function() {
+                let summPrice = 0;
+                for (let product in this.list) {
+                    summPrice += this.list[product].price * this.list[product].quantity;
+                }
+                console.log(`Суммарная стоимость товаров в корзине: ${summPrice}`)
+                return summPrice
+            },
+
+            // создадим для корзины метод подсчитывающий количество товаров в ней
+            numberOfItems: function() {
+                let number = 0;
+                for (let product in this.list) {
+                    number += this.list[product].quantity;
+                }
+                return number;
+            }
+        };
+
+        // Добавим в корзину несколько товаров для примера
+        shoppingCart.list.push({
+            name: 'apple',
+            price: 30,
+            quantity: 5
+        })
+
+        shoppingCart.list.push({
+            name: 'banana',
+            price: 50,
+            quantity: 4
+        })
+
+        shoppingCart.list.push({
+            name: 'orange',
+            price: 70,
+            quantity: 2
+        })
+
+        // Собственно генерация корзины:
+
+        // Создадим заголовок корзины
+        var basketHeader = document.createElement('h1');
+        basketHeader.innerHTML = 'Содержимое корзины:'
+        basket.appendChild(basketHeader);
+
+        var basketContent = document.createElement('div');
+        if (shoppingCart.numberOfItems() == 0) {
+            basketContent.innerHTML = 'Корзина пуста!';
+        } else {
+            basketContent.innerHTML = 'В корзине ' + shoppingCart.numberOfItems() + 'товаров на сумму' + shoppingCart.countBasketPrice();
+        };
+
+        basket.appendChild(basketContent);
+
+        // Дальше по каталогу:
+
+        var Product = {
+            // массив list хранит список товаров
+            // Товары должны быть представлены объекстами со свойствами name, price
+            list: []
+            // Больше для каталога пока ничего не делаем
+        }
+
+        // Заполним каталог аналогично корзине
+        Product.list.push({
+            name: 'apple',
+            price: 30,
+        })
+
+        Product.list.push({
+            name: 'banana',
+            price: 50,
+        })
+
+        Product.list.push({
+            name: 'orange',
+            price: 70,
+        })
+        
+        var catalogHeader = document.createElement('h1');
+        catalogHeader.innerHTML = 'Каталог товаров:';
+        catalog.appendChild(catalogHeader);
+
+        for (let product in Product.list) {
+            var position = document.createElement('div');
+            position.className = 'product';
+            catalog.appendChild(position);
+
+            var productName = document.createElement('div');
+            productName.className = 'product_name';
+            productName.innerHTML = '<p>' + Product.list[product].name + '</p>'
+            position.appendChild(productName);
+
+            var productPrice = document.createElement('div');
+            productPrice.className = 'product_price';
+            productPrice.innerHTML = '<p>' + Product.list[product].price + '</p>'
+            position.appendChild(productPrice);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS. Lesoon-5. Task-1</title>
+    <link rel="stylesheet" href="task-1-styles.css">
+</head>
+<body>
+    <!-- Создать функцию, генерирующую шахматную доску. При этом можно использовать любые html-теги по своему желанию.
+    Доска должна быть разлинована соответствующим образом, т.е. чередовать черные и белые ячейки.
+    Строки должны нумероваться числами от 1 до 8, столбцы – латинскими буквами A, B, C, D, E, F, G, H.
+    (использовать createElement / appendChild) -->
+    
+    <!-- В структуре HTML документа создадим один объект div с id chessBoard который будем наполнять содержимимы с помощью JS -->
+    <div id='chessBoard'></div>
+    <script>
+        // Чтобы не повторить свою прошлую ошибку, используем use strict (а то python привычки ;) )
+        "use strict";
+
+        // создаем набор рядов класса row
+        for (var i = 0; i < 10; i++) {
+            var row = document.createElement('div');
+            row.className = "row";
+
+            // Первому и последнему ряду присваиваем дополнительный класс first_row
+            if (i == 0 || i == 9) {
+                row.classList.add("first_row")    
+            };
+            
+            // добавляем созданный ряд на "Доску"
+            chessBoard.appendChild(row);
+
+            var letterNumber = 65; // Переменная со значением кода первой буквы для заполнения крайних рядов
+
+            // В текущем ряду создаем набор ячеек с классом cell
+            for (var j = 0; j < 10; j++) {
+                var cell = document.createElement('div');
+                cell.className = "cell";
+
+                // Первой и последней ячейкам присваиваем дополнительный класс first_cell
+                if (j==0 || j == 9) {
+                    cell.classList.add("first_cell");    
+                };
+
+                // Ячейки первой и последней строки заполняем буквами
+                if ((i == 0 & j != 0 & j != 9) || (i == 9 & j != 0 & j != 9)) {
+                    cell.innerHTML = '<p>' + String.fromCharCode(letterNumber) + '</p>';
+                    letterNumber++;
+                };
+
+                // Ячейки первого и последнего столбца заполняем цифрами
+                if ((j == 0 & i != 0 & i != 9) || (j == 9 & i != 0 & i != 9)) {
+                       cell.innerHTML = '<p>' + i + '</p>'; 
+                };
+
+                // "Нечетным" ячейкам (сумма номера столбца и строки у которых - нечетное) присваиваем доп класс odd_cell
+                if (j != 0 & i != 0 & j != 9 & i != 9 & ((i + j) % 2) != 1) {
+                    cell.classList.add("odd_cell");
+                };
+
+                // Добавляем ячейку в ряд
+                row.appendChild(cell);
+            };
+        };
+
+    </script>
+</body>
+</html>
