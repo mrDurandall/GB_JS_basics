@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="snake_style.css" />
+    <title>JS. Урок 7. Snake</title>
+</head>
+<body>
+    <!--    1. Выводить счёт в режиме реального времени.
+            2. Генерировать временные препятствия на поле.
+            3. *Убрать границы поля. Т.е. при пересечении границы поля змейка появляется с противоположной стороны. -->
+
+    <!-- Добавим div для отображения счета -->
+    <div id='score' class='score'>Score: 0</div>
+
+    <div id="game-wrap">
+        <table id="game"></table>
+    </div>
+    
+    <div id="menu">
+        <div id="playButton" class="menuButton">Start</div>
+        <div id="newGameButton" class="menuButton">New game</div>
+    </div>
+    
+    <script src="snake_script.js"></script>
+    
+</body>
+</html>
